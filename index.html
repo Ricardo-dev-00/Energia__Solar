@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora de energia solar">
+    <meta name="keywords" content="energia solar, calculadora, energia renovável">
+    <meta name="author" content="Ricardo vieira">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="assets/imagem/ico-page.ico" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Energia Solar</title>
+</head>
+
+<body>
+    <main>
+        <section class="container">
+            <h1 class="container__title">Energia solar</h1>
+            <form action="" class="container__form">
+                <label for="">Consumo mensal (kwh)</label>
+                <input type="number" id="consumo" placeholder="Digite o consumo mensal" required>
+                <label for="">CEP</label>
+                <input type="number" id="cep" placeholder="Digite o CEP" required>
+                <button class="container__form__btn">Calcular</button>
+            </form>
+            <div class="container__resultado">
+                <h2 class="container__resultado__title">Resultado</h2>
+                <div class="container__resultado__card container__resultado__card--placa">
+                    <h3 class="container__resultado__card__title">Número total de placas solares necessárias:</h3>
+                    <p class="container__resultado__card__valor" id="numero-placas">10 Placas</p>
+                </div>
+                <div class="container__resultado__card container__resultado__card--irradiacao">
+                    <h3 class="container__resultado__card__title">Irradiação solar média:</h3>
+                    <p class="container__resultado__card__valor" id="resultado-irradiacao">150 kWh/kWp/mês</p>
+                    <p class="container__resultado__card__valor" id="resultado-irradiacao-texto">Boa!</p>
+                </div>
+            </div>
+        </section>
+        <section class="download">
+            <button class="download__btn">
+                <i class="fa-solid fa-download"></i> Baixe seu relatório solar completo
+            </button>
+            <div class="download__relatorio">
+                <h3 class="download__relatorio__title">O que Vem no PDF de relatorio solar completo?</h3>
+                <p class="download__relatorio__sobre">O PDF contém uma análise detalhada do seu sistema fotovoltaico com
+                    base nas informações fornecidas. Nele, você encontrará:
+                    <br> <br>
+                    ✅ Dados informados pelo usuário: consumo médio mensal de energia, localização (CEP) e outras
+                    informações relevantes para o dimensionamento.
+                    <br><br>
+                    ☀️ Irradiação solar média: análise da média de geração solar na sua região, essencial para calcular
+                    a produção de energia do sistema.
+                    <br><br>
+                    💰 Estimativa de investimento: faixa de custo aproximado do sistema, incluindo equipamentos,
+                    instalação e regularização.
+                    <br><br>
+                    🔋 Escolha das placas: especificações das placas solares sugeridas (potência em Wp, eficiência e
+                    quantidade necessária).
+                    <br><br>
+                    📏 Área necessária no telhado: cálculo da área mínima exigida para a instalação das placas com base
+                    na potência total do sistema.
+                    <br><br>
+                    💸 Economia esperada: estimativa de redução na sua conta de luz mensal e retorno sobre o
+                    investimento (payback).
+                    <br><br>
+                    🧭 Condições ideais de instalação: orientações sobre posição do telhado, inclinação e fatores que
+                    influenciam a eficiência.
+                    <br><br>
+                    ⚙️ Componentes do sistema: lista dos principais equipamentos envolvidos, como inversores, suportes,
+                    cabos e proteções elétricas.
+                    <br><br>
+                    📑 Observações regulatórias: informações sobre o processo de homologação junto à concessionária e
+                    geração de créditos energéticos conforme as normas da ANEEL.
+                    <br><br>
+                    Este documento foi criado para ajudar você a entender exatamente o que é necessário para gerar sua
+                    própria energia e tomar uma decisão consciente e segura.
+                </p>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__text">
+            &copy; 2025 <a href="https://github.com/Ricardo-dev-00" target="_blank" rel="noopener"
+                class="footer__text__link">Ricardo Vieira</a>. Todos os direitos reservados.
+        </p>
+    </footer>
+</body>
+
+</html>
