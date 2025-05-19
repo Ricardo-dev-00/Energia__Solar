@@ -7,6 +7,7 @@
     <meta name="description" content="Calculadora de energia solar">
     <meta name="keywords" content="energia solar, calculadora, energia renovável">
     <meta name="author" content="Ricardo vieira">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <meta name="robots" content="index, follow">
     <link rel="icon" href="assets/imagem/ico-page.ico" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -19,8 +20,45 @@
         <section class="container">
             <h1 class="container__title">Energia solar</h1>
             <form action="" class="container__form">
-                <label for="">Consumo mensal (kwh)</label>
+                <label for="consumo">
+                    Consumo mensal (kWh)
+                    <span class="tooltip" tabindex="0">
+                        ⓘ
+                        <span class="tooltip-text">
+                            Você encontra essa informação na sua conta de energia, geralmente com o nome “Consumo do
+                            mês”.
+                        </span>
+                    </span>
+                </label>
                 <input type="number" id="consumo" placeholder="Digite o consumo mensal" required>
+                <label for="tarifa">
+                    Tarifa de energia (R$/kWh)
+                    <span class="tooltip" tabindex="0">
+                        ⓘ
+                        <span class="tooltip-text">
+                            Informe o valor exato da sua “Tarifa de energia” ou
+                            “Tarifa básica”, que voçe encontra no demostrativo da sua conta de luz.
+                        </span>
+                    </span>
+                </label>
+                <input type="number" id="tarifa" placeholder="Ex: 0.71" step="0.01" min="0.1" required>
+                <label for="potencia-placa">
+                    Potência da placa (W)
+                    <span class="tooltip" tabindex="0">
+                        ⓘ
+                        <span class="tooltip-text">
+                            Escolha a potência da placa solar que deseja considerar no cálculo.
+                        </span>
+                    </span>
+                </label>
+                <select id="potencia-placa" required>
+                    <option value="150">150 W</option>
+                    <option value="300">300 W</option>
+                    <option value="400">400 W</option>
+                    <option value="450" selected>450 W</option>
+                    <option value="500">500 W</option>
+                    <option value="550">550 W</option>
+                </select>
                 <label for="">CEP</label>
                 <input type="number" id="cep" placeholder="Digite o CEP" required>
                 <button class="container__form__btn">Calcular</button>
@@ -29,17 +67,17 @@
                 <h2 class="container__resultado__title">Resultado</h2>
                 <div class="container__resultado__card container__resultado__card--placa">
                     <h3 class="container__resultado__card__title">Número total de placas solares necessárias:</h3>
-                    <p class="container__resultado__card__valor" id="numero-placas">10 Placas</p>
+                    <p class="container__resultado__card__valor" id="numero-placas"></p>
                 </div>
                 <div class="container__resultado__card container__resultado__card--irradiacao">
                     <h3 class="container__resultado__card__title">Irradiação solar média:</h3>
-                    <p class="container__resultado__card__valor" id="resultado-irradiacao">150 kWh/kWp/mês</p>
-                    <p class="container__resultado__card__valor" id="resultado-irradiacao-texto">Boa!</p>
+                    <p class="container__resultado__card__valor" id="resultado-irradiacao"></p>
+                    <p class="container__resultado__card__valor" id="resultado-irradiacao-texto"></p>
                 </div>
             </div>
         </section>
         <section class="download">
-            <button class="download__btn">
+            <button class="download__btn" id="download-relatorio">
                 <i class="fa-solid fa-download"></i> Baixe seu relatório solar completo
             </button>
             <div class="download__relatorio">
@@ -86,6 +124,7 @@
                 class="footer__text__link">Ricardo Vieira</a>. Todos os direitos reservados.
         </p>
     </footer>
+    <script src="assets/js/app.js"></script>
 </body>
 
 </html>

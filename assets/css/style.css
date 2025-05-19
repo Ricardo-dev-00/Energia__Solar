@@ -17,26 +17,20 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 40px 20px;
-
     background-image: url(../imagem/bg-container.png);
     background-position: center;
-    background-size: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
-
     border-radius: 10px;
     width: 440px;
-    /* largura fixa para o container */
     max-width: 95vw;
-    /* responsivo em telas menores */
     margin: 40px auto;
-    /* centraliza na tela */
 }
 
 .container__title {
     font-size: 2rem;
     text-align: center;
     color: #404E57;
-
 }
 
 .container__form {
@@ -51,7 +45,7 @@ body {
     width: 100%;
     max-width: 400px;
     min-width: 300px;
-    padding: 10px;
+    padding: 15px 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -71,16 +65,74 @@ body {
     align-self: flex-start;
     margin-left: 0;
     text-align: left;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 1rem;
+    font-weight: 600;
     margin-top: 10px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    color: #a80000;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 260px;
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    font-weight: normal;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text,
+.tooltip:focus .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+label {
+    display: block;
+
+}
+
+/* Para estilizar o select da potência da placa */
+.container__form select {
+    width: 100%;
+    max-width: 400px;
+    min-width: 300px;
+    padding: 15px 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    background-color: #fff;
+    color: #333;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.container__form select:focus {
+    border-color: #007BFF;
 }
 
 .container__form__btn {
     width: 400px;
     max-width: 400px;
     min-width: 300px;
-    padding: 10px;
+    padding: 15px 5px;
     margin-top: 20px;
     border: none;
     border-radius: 10px;
@@ -128,7 +180,6 @@ body {
     text-align: center;
     color: #404E57;
     text-transform: capitalize;
-
 }
 
 .container__resultado__card__valor {
@@ -150,7 +201,6 @@ body {
     margin: 40px auto 0 auto;
     flex-direction: column;
     padding: 0 10px;
-
 }
 
 .download__btn {
@@ -172,7 +222,6 @@ body {
     justify-content: center;
     gap: 0.5em;
     transition: color 0.2s, background 0.2s;
-    /* Efeito de borda gradiente */
     background-image: linear-gradient(#fff, #fff), linear-gradient(90deg, #007BFF, #FFD600, #399D1A);
     background-origin: border-box;
     background-clip: padding-box, border-box;
@@ -180,7 +229,7 @@ body {
 }
 
 .download__btn i {
-    /* line-height: 40px;  REMOVA ESTA LINHA */
+
     margin-right: 0.5em;
     font-size: 1.1em;
     vertical-align: middle;
@@ -220,9 +269,6 @@ body {
     text-decoration: none;
 }
 
-
-
-
 .download__relatorio {
     display: flex;
     flex-direction: column;
@@ -239,7 +285,6 @@ body {
     padding: 20px 0;
 }
 
-
 .download__relatorio__sobre {
     font-size: 16px;
 
@@ -247,8 +292,6 @@ body {
     text-transform: capitalize;
     padding: 40px 0;
 }
-
-
 
 
 /* Responsividade para telas menores */
