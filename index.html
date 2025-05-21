@@ -66,55 +66,61 @@
             <div class="container__resultado">
                 <h2 class="container__resultado__title">Resultado</h2>
                 <div class="container__resultado__card container__resultado__card--placa">
-                    <h3 class="container__resultado__card__title">Número total de placas solares necessárias:</h3>
+                    <h3 class="container__resultado__card__title">quantidade de placas solares recomendada:</h3>
                     <p class="container__resultado__card__valor" id="numero-placas"></p>
                 </div>
                 <div class="container__resultado__card container__resultado__card--irradiacao">
-                    <h3 class="container__resultado__card__title">Irradiação solar média:</h3>
+                    <h3 class="container__resultado__card__title">Potencial solar no seu endereço:</h3>
                     <p class="container__resultado__card__valor" id="resultado-irradiacao"></p>
                     <p class="container__resultado__card__valor" id="resultado-irradiacao-texto"></p>
                 </div>
             </div>
-        </section>
-        <section class="download">
+            <p class="container__resultado__obs">
+                <strong>Observação:</strong> O cálculo já considera uma margem de 20% para perdas do sistema (sujidade,
+                temperatura, sombreamento, etc.), garantindo maior segurança no dimensionamento.
+            </p>
             <button class="download__btn" id="download-relatorio">
-                <i class="fa-solid fa-download"></i> Baixe seu relatório solar completo
+                <i class="fa-solid fa-download"></i>Baixar meu relatório solar
             </button>
-            <div class="download__relatorio">
-                <h3 class="download__relatorio__title">O que Vem no PDF de relatorio solar completo?</h3>
-                <p class="download__relatorio__sobre">O PDF contém uma análise detalhada do seu sistema fotovoltaico com
-                    base nas informações fornecidas. Nele, você encontrará:
-                    <br> <br>
-                    ✅ Dados informados pelo usuário: consumo médio mensal de energia, localização (CEP) e outras
-                    informações relevantes para o dimensionamento.
-                    <br><br>
-                    ☀️ Irradiação solar média: análise da média de geração solar na sua região, essencial para calcular
-                    a produção de energia do sistema.
-                    <br><br>
-                    💰 Estimativa de investimento: faixa de custo aproximado do sistema, incluindo equipamentos,
-                    instalação e regularização.
-                    <br><br>
-                    🔋 Escolha das placas: especificações das placas solares sugeridas (potência em Wp, eficiência e
-                    quantidade necessária).
-                    <br><br>
-                    📏 Área necessária no telhado: cálculo da área mínima exigida para a instalação das placas com base
-                    na potência total do sistema.
-                    <br><br>
-                    💸 Economia esperada: estimativa de redução na sua conta de luz mensal e retorno sobre o
-                    investimento (payback).
-                    <br><br>
-                    🧭 Condições ideais de instalação: orientações sobre posição do telhado, inclinação e fatores que
-                    influenciam a eficiência.
-                    <br><br>
-                    ⚙️ Componentes do sistema: lista dos principais equipamentos envolvidos, como inversores, suportes,
-                    cabos e proteções elétricas.
-                    <br><br>
-                    📑 Observações regulatórias: informações sobre o processo de homologação junto à concessionária e
-                    geração de créditos energéticos conforme as normas da ANEEL.
-                    <br><br>
-                    Este documento foi criado para ajudar você a entender exatamente o que é necessário para gerar sua
-                    própria energia e tomar uma decisão consciente e segura.
-                </p>
+        </section>
+        <section class="faq">
+            <h2 class="faq__title">Dúvidas Frequentes</h2>
+
+            <button class="faq__btn" type="button" onclick="toggleFaq('faq-perdas')">O que são as perdas do
+                sistema?</button>
+            <div class="faq__resposta" id="faq-perdas" style="display:none;">
+                As perdas do sistema podem ser causadas por fatores como sujeira acumulada nas placas, temperatura
+                elevada, sombreamento parcial ao longo do dia, perdas elétricas nos cabos e limitações de eficiência dos
+                equipamentos. </div>
+
+            <button class="faq__btn" type="button" onclick="toggleFaq('faq-pdf')">O que vem no PDF de relatório solar
+                completo?</button>
+            <div class="faq__resposta" id="faq-pdf" style="display:none;">
+                O PDF contém uma análise detalhada do seu sistema fotovoltaico com base nas informações fornecidas.
+                Nele, você encontra dados do consumo, irradiação solar, estimativa de investimento, escolha das placas,
+                área necessária, economia esperada, condições ideais de instalação, componentes do sistema e observações
+                regulatórias.
+            </div>
+
+            <button class="faq__btn" type="button" onclick="toggleFaq('faq-tarifa')">Como descubro minha tarifa de
+                energia?</button>
+            <div class="faq__resposta" id="faq-tarifa" style="display:none;">
+                Você encontra a tarifa de energia (R$/kWh) na sua conta de luz, geralmente chamada de “Tarifa de
+                energia” ou “Tarifa básica”. Informe esse valor no campo correspondente para um cálculo mais preciso.
+            </div>
+
+            <button class="faq__btn" type="button" onclick="toggleFaq('faq-potencia')">Qual potência de placa devo
+                escolher?</button>
+            <div class="faq__resposta" id="faq-potencia" style="display:none;">
+                A potência da placa influencia diretamente na quantidade de placas necessárias e no espaço ocupado no
+                telhado. Placas de maior potência geram mais energia e ocupam menos espaço, mas podem ter custo maior.
+                Escolha a opção que melhor se adapta ao seu orçamento e espaço disponível.
+            </div>
+
+            <button class="faq__btn" type="button" onclick="toggleFaq('faq-cep')">Por que informar o CEP?</button>
+            <div class="faq__resposta" id="faq-cep" style="display:none;">
+                O CEP é usado para identificar a localização do imóvel e buscar a irradiação solar média da sua região,
+                tornando o cálculo mais preciso para o seu endereço.
             </div>
         </section>
     </main>
@@ -125,6 +131,7 @@
         </p>
     </footer>
     <script src="assets/js/app.js"></script>
+   
 </body>
 
 </html>
