@@ -63,7 +63,7 @@ function calcularPlacas(consumoMensal, irradiacaoMedia, potenciaPlaca = 450, efi
     return { quantidade, potenciaPlaca };
 }
 
-function estimarInvestimento(qtdPlacas, potenciaPlaca, custoInstalacao = 5000) {
+function estimarInvestimento(qtdPlacas, potenciaPlaca, custoInstalacao = 8000) {
     const precoPlaca = precoPlacaPorPotencia(potenciaPlaca);
     return qtdPlacas * precoPlaca + custoInstalacao;
 }
