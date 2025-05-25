@@ -21,12 +21,11 @@ body {
 .container {
     display: flex;
     min-height: 100vh;
-
     justify-content: center;
     flex-direction: column;
     align-items: center;
     padding: 40px 10px;
-    background-color: rgb(255, 255, 249);
+    background-color: #fff;
     border-radius: 10px;
     width: 100%;
     max-width: 440px;
@@ -35,24 +34,25 @@ body {
 }
 
 .container__title {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     text-align: center;
     color: #404E57;
 }
 
 .container__titulo__sub_titulo {
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-align: center;
-    color: #404E57;
+    color: #007BFF;
     margin-top: 5px;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 .container__text {
     font-size: 1rem;
     text-align: center;
     color: #c0c0c0;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .container__form {
@@ -125,7 +125,6 @@ body {
 
 label {
     display: block;
-
 }
 
 /* Para estilizar o select da potência da placa */
@@ -224,8 +223,6 @@ label {
     margin-top: 40px;
 }
 
-
-
 .download__btn.disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -245,9 +242,7 @@ label {
     cursor: pointer;
     box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.281);
     transition: background-color 0.3s, color 0.3s, border 0.3s;
-
     word-break: break-word;
-    /* Evita quebra feia de texto */
 }
 
 .download__btn i {
