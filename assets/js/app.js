@@ -1,3 +1,57 @@
+const FORM_STORAGE_KEY = 'energiaSolar:lastFormValues';
+const formFields = {
+    consumo: document.getElementById('consumo'),
+    tarifa: document.getElementById('tarifa'),
+    potenciaPlaca: document.getElementById('potencia-placa'),
+    cep: document.getElementById('cep')
+};
+
+function formatCep(value) {
+    const digits = String(value || '').replace(/\D/g, '').slice(0, 8);
+    return digits.length > 5
+        ? `${digits.slice(0, 5)}-${digits.slice(5)}`
+        : digits;
+}
+
+function saveFormValues() {
+    const payload = {
+        consumo: formFields.consumo.value,
+        tarifa: formFields.tarifa.value,
+        potenciaPlaca: formFields.potenciaPlaca.value,
+        cep: formFields.cep.value
+    };
+
+    localStorage.setItem(FORM_STORAGE_KEY, JSON.stringify(payload));
+}
+
+function restoreFormValues() {
+    const saved = localStorage.getItem(FORM_STORAGE_KEY);
+    if (!saved) return;
+
+    try {
+        const values = JSON.parse(saved);
+        if (values.consumo) formFields.consumo.value = values.consumo;
+        if (values.tarifa) formFields.tarifa.value = values.tarifa;
+        if (values.potenciaPlaca) formFields.potenciaPlaca.value = values.potenciaPlaca;
+        if (values.cep) formFields.cep.value = formatCep(values.cep);
+    } catch {
+        localStorage.removeItem(FORM_STORAGE_KEY);
+    }
+}
+
+restoreFormValues();
+
+const cepInput = formFields.cep;
+
+cepInput.addEventListener('input', function (e) {
+    e.target.value = formatCep(e.target.value);
+    saveFormValues();
+});
+
+formFields.consumo.addEventListener('input', saveFormValues);
+formFields.tarifa.addEventListener('input', saveFormValues);
+formFields.potenciaPlaca.addEventListener('change', saveFormValues);
+
 document.querySelector('.container__form').addEventListener('submit', async function (e) {
     e.preventDefault();
     const cep = document.getElementById('cep').value;
@@ -37,12 +91,43 @@ function classificarIrradiacao(irradiacao) {
 
 // Função para converter CEP em latitude e longitude
 async function cepToLatLng(cep) {
-    const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${cep}, Brasil`);
-    const data = await response.json();
+    const cepLimpo = String(cep).replace(/\D/g, '');
+
+    if (cepLimpo.length !== 8) {
+        throw new Error('CEP inválido. Use o formato 00000-000.');
+    }
+
+    const viaCepResponse = await fetch(`https://viacep.com.br/ws/${cepLimpo}/json/`);
+    const endereco = await viaCepResponse.json();
+
+    if (endereco.erro) {
+        throw new Error('CEP não encontrado');
+    }
+
+    const partesBusca = [endereco.logradouro, endereco.bairro, endereco.localidade, endereco.uf, 'Brasil']
+        .filter(Boolean)
+        .join(', ');
+
+    const nominatimResponse = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(partesBusca)}`
+    );
+    const data = await nominatimResponse.json();
+
     if (data.length > 0) {
         return { lat: data[0].lat, lon: data[0].lon };
     }
-    throw new Error('CEP não encontrado');
+
+    const fallbackBusca = `${endereco.localidade}, ${endereco.uf}, Brasil`;
+    const fallbackResponse = await fetch(
+        `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(fallbackBusca)}`
+    );
+    const fallbackData = await fallbackResponse.json();
+
+    if (fallbackData.length > 0) {
+        return { lat: fallbackData[0].lat, lon: fallbackData[0].lon };
+    }
+
+    throw new Error('Não foi possível localizar este CEP no mapa');
 }
 
 // Função para buscar irradiação solar média na NASA POWER

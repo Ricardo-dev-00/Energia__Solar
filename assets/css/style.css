@@ -14,6 +14,7 @@ body {
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #EDEDED;
+    background-image: linear-gradient(135deg, #EDEDED 0%, #b8d1e8 45%, #4682B4 100%);
     width: 100%;
     height: 100%;
 }
